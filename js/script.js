@@ -1,3 +1,7 @@
 const selectTag = document.querySelectorAll("select");
 
-selectTag
+selectTag.forEach(tag =>{
+    for (const key in object){
+        
+    }
+});
