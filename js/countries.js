@@ -1,4 +1,4 @@
-const first50Countries = [
+const Countries = [
     "United States", "Canada", "United Kingdom", "Australia", "Germany",
     "France", "Italy", "Spain", "Japan", "China", "India", "Brazil", "Mexico",
     "South Korea", "Russia", "Argentina", "Turkey", "Saudi Arabia", "South Africa",
