@@ -1,11 +1,13 @@
 /* Option 2: Import via CSS */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
+
 body{
     display: flex;
     align-items: center;
@@ -13,47 +15,52 @@ body{
     min-height: 100vh;
     background: #5372f0;
 }
+
 .container{
-    width: 690px;
+    width: 690PX;
     background: #fff;
     border-radius: 7px;
     padding: 30px;
 }
+
 .wrapper{
     border-radius: 5px;
-    border: 1px solid #bbb ;
+    border: 1px solid #bbb;
 }
+
 .wrapper .text-input{
     display: flex;
-    border-bottom: 1px solid  #bbb;
+    border-bottom: 1px solid #bbb;
+}
 
-}
 .text-input .to-text{
-    border-left: 1px solid #bbb;
     border-radius: 0px;
+    border-left: 1px solid #bbb;
 }
+
 .text-input textarea{
     height: 250px;
     width: 100%;
     border: none;
     outline: none;
+    resize: none;
     font-size: 18px;
     border-radius: 5px;
-    resize: none;
     background: none;
     padding: 10px 15px;
 }
-.controls li,.icons,.icons i{
+
+.controls, li, .icons, .icons i{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .controls{
     list-style: none;
     padding: 12px 15px;
-    
 }
-.controls .row.form .icons{
+.controls .row.from .icons{
     padding-right: 15px;
     border-right: 1px solid #bbb;
 }
@@ -66,11 +73,10 @@ body{
 }
 .controls .icons i{
     width: 50px;
-    color: #9f9f9f;
-    font-size: 14px;
+    color: #000;
+    font-size: 20px ;
     cursor: pointer;
-    justify-content: space-between;
-
+    justify-content: center;
 }
 .controls .row select{
     border: none;
@@ -79,19 +85,19 @@ body{
     background: none;
 }
 .controls .exchange{
-    color: #9f9f9f;
-    font-size: 15px;
+    color: #000;
+    font-size: 20px;
     cursor: pointer;
 }
 .container button{
     width: 100%;
     padding: 14px;
-    margin: 20px;
+    margin-top: 20px;
     border: none;
     outline: none;
     cursor: pointer;
     color: #fff;
     font-size: 17px;
-    border-radius: 5px;
+    border-radius: 17px;
     background: #5372f0;
 }
