@@ -8,5 +8,7 @@ selectTag.forEach(tag =>{
         }else if(id == 1 && country_code == "hi-IN"){
             selected = "selected";
         }
+        let option = `<option value="${country_code}"${}>${countries[country_code]}</option>`;
+        tag.
     }
 });
