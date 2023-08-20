@@ -5,6 +5,6 @@ selectTag.forEach(tag =>{
         let selected;
         if(id == 0 && country_code == "en-GB"){
             selected = "selected";
-        }
+        }else if(id)
     }
 });
