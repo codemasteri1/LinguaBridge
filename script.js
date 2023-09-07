@@ -19,9 +19,13 @@ selectTag.forEach(tag =>{
 
 
 exchangeIcon.addEventListener("click" , () =>{
-    let tempText = forText.value;
-    fromText.value = toText.value;
-    toText.value = toText.value;
+    let tempText = forText.value,
+    tempLang = selectTag[0].value;
+    forText.value = toText.value;
+    selectTag[1] = selectTag[0].value;
+    toText.value = tempText;
+    selectTag[1].value = tempLang;
+
 });
 
 translateBtn.addEventListener("click" , () =>{
