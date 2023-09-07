@@ -1,5 +1,6 @@
-const selectTag = document.querySelectorAll("select");
-
+selectTag = document.querySelectorAll("select");
+const fortext = document.querySelectorAll(".for-text")
+id = 0
 selectTag.forEach(tag =>{
     for (const country_code in countries){
         let selected;
@@ -8,7 +9,7 @@ selectTag.forEach(tag =>{
         }else if(id == 1 && country_code == "hi-IN"){
             selected = "selected";
         }
-        let option = `<option value="${country_code}"${}>${countries[country_code]}</option>`;
-        tag.
+        let option = `<option value="${country_code}" ${selected}>${countries[country_code]}</option>`;
+        tag.insertAdjacentHTML("beforeend", option);
     }
 });
