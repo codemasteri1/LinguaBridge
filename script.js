@@ -1,5 +1,6 @@
 selectTag = document.querySelectorAll("select");
 const forText = document.querySelector(".form-text")
+toText = document.querySelector(".to-text")
 translateBtn = document.querySelector("button")
 id = 0
 selectTag.forEach(tag =>{
