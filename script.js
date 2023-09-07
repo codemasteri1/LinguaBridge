@@ -15,8 +15,11 @@ selectTag.forEach(tag =>{
     }
 });
 translateBtn.addEventListener("click" , () =>{
-    let text = forText.value
+    let text = forText.value,
     translateFrom = selectTag[0].value,
-    translateTo = selectTag[1].value,
-    console.log(text)
+    translateTo = selectTag[1].value;
+    let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
+    fetch(apiUrl).then(res => res.json()).then(data => {
+        console.log(data);
+    });
 });
