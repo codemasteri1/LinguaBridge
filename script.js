@@ -1,5 +1,5 @@
 selectTag = document.querySelectorAll("select");
-const fortext = document.querySelectorAll(".for-text")
+const forText = document.querySelector(".form-text")
 translateBtn = document.querySelector("button")
 id = 0
 selectTag.forEach(tag =>{
@@ -13,4 +13,9 @@ selectTag.forEach(tag =>{
         let option = `<option value="${country_code}" ${selected}>${countries[country_code]}</option>`;
         tag.insertAdjacentHTML("beforeend", option);
     }
+});
+translateBtn.addEventListener("click" , () =>{
+    let text = forText.value
+    translateFrom = selectTag[0].value,
+    console.log(text)
 });
