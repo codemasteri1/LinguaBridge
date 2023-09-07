@@ -17,5 +17,6 @@ selectTag.forEach(tag =>{
 translateBtn.addEventListener("click" , () =>{
     let text = forText.value
     translateFrom = selectTag[0].value,
+    translateTo = selectTag[1].value,
     console.log(text)
 });
