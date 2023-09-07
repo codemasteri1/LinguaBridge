@@ -1,4 +1,5 @@
 selectTag = document.querySelectorAll("select");
+exchangeIcon = document.querySelector(".exchange");
 const forText = document.querySelector(".form-text")
 toText = document.querySelector(".to-text")
 translateBtn = document.querySelector("button")
@@ -15,6 +16,14 @@ selectTag.forEach(tag =>{
         tag.insertAdjacentHTML("beforeend", option);
     }
 });
+
+
+exchangeIcon.addEventListener("click" , () =>{
+    let tempText = forText.value;
+    fromText.value = toText.value;
+    toText.value = toText.value;
+});
+
 translateBtn.addEventListener("click" , () =>{
     let text = forText.value,
     translateFrom = selectTag[0].value,
@@ -22,5 +31,7 @@ translateBtn.addEventListener("click" , () =>{
     let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
     fetch(apiUrl).then(res => res.json()).then(data => {
         console.log(data);
+        toText.value = data.responseData.translatedText;
+
     });
 });
