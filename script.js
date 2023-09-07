@@ -1,5 +1,6 @@
 selectTag = document.querySelectorAll("select");
 const fortext = document.querySelectorAll(".for-text")
+translateBtn = document.querySelector("button")
 id = 0
 selectTag.forEach(tag =>{
     for (const country_code in countries){
