@@ -42,18 +42,21 @@ translateBtn.addEventListener("click" , () =>{
 icons.forEach(icons =>{
     icons.addEventListener("click", ({target}) =>{
         if (target.classList.contains("bi-clipboard-check")) {
-            if(target.id == "from"){
-                navigate.clipboard.writeText(fromText.value)
+            if(target.id === "from"){
+                navigator.clipboard.writeText(fromText.value)
             }else{
-                navigate.clipboard.writeText(toText.value)
+                navigator.clipboard.writeText(toText.value)
             }
         }
         else{
             let utternance;
                 if(target.id == "from"){
                     utternance = new SpeechSynthesisUtterance(fromText.value);
+                    utternance.lang = selectTag[0].value;
                 }else{
                     utternance = new SpeechSynthesisUtterance(toText.value);
-                }        }
+                    utternance.lang = selectTag[1].value;
+
+                }   speechSynthesis.speak(utternance);     }
     });
 });
