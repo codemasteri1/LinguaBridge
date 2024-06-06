@@ -17,7 +17,7 @@ body{
 }
 
 .container{
-    width: 690PX;
+    width: 590PX;
     background: #fff;
     border-radius: 7px;
     padding: 30px;
@@ -100,4 +100,8 @@ body{
     font-size: 17px;
     border-radius: 17px;
     background: #5372f0;
+}
+.side-bar{
+    height: 50px;
+    width: 10;
 }
