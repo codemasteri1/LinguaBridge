@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container">
+<div class="container" id="container">
     <div class="wrapper">
         <div class="text-input">
             <textarea class="from-text" placeholder="Enter text"></textarea>
@@ -35,22 +35,23 @@
                 </div>
             </li>
         </ul>
+        <div class="voice-controls">
+            <button id="startRecording">Start Recording</button>
+            <button id="stopRecording">Stop Recording</button>
+            <button id="playTranslation">Play Translation</button>
+        </div>
     </div>
     <button id="translate-btn">Translate Text</button>
 </div>
-<!-- <div class="sidebar"><button id="translate-btn1">North America</button><br><button id="translate-btn2">South America</button>
-<button id="translate-btn3">Europe</button><br><button id="translate-btn4">Asia</button><br><button id="translate-btn">Africa</button>
-<br><button id="translate-btn">Australia</button></div> -->
-<div class="sidebar">
 
-    <!-- Buttons for each continent -->
+<!-- Sidebar for continent selection -->
+<div class="sidebar">
     <button onclick="openContinentSidebar('North America')">North America</button>
     <button onclick="openContinentSidebar('South America')">South America</button>
     <button onclick="openContinentSidebar('Europe')">Europe</button>
     <button onclick="openContinentSidebar('Asia')">Asia</button>
     <button onclick="openContinentSidebar('Africa')">Africa</button>
     <button onclick="openContinentSidebar('Australia')">Australia</button>
-    <!-- Add more buttons for other continents as needed -->
 </div>
 
 <!-- Continent Sidebar -->
@@ -60,7 +61,7 @@
         <!-- Content for continent sidebar will be dynamically populated -->
     </div>
 </div>
-<div id="country-container"></div>
+
 <script src="js/countries.js"></script>
 <script src="js/script.js"></script>
 </body>

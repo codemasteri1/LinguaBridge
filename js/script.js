@@ -5,6 +5,15 @@ const exchangeIcon = document.querySelector(".exchange");
 const translateBtn = document.querySelector("#translate-btn");
 const icons = document.querySelectorAll(".row i");
 
+// New buttons for voice input and output
+const startRecording = document.getElementById("startRecording");
+const stopRecording = document.getElementById("stopRecording");
+const playTranslation = document.getElementById("playTranslation");
+
+// Speech recognition setup
+let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+let isRecording = false;
+
 selectTags.forEach((tag, id) => {
     for (const country_code in countries) {
         // selecting English by default as From language and Korean as To language
@@ -64,6 +73,40 @@ icons.forEach((icon) => {
         }
     });
 });
+
+// Adding voice input feature
+startRecording.addEventListener("click", () => {
+    if (!isRecording) {
+        recognition.start();
+        isRecording = true;
+    }
+});
+
+stopRecording.addEventListener("click", () => {
+    if (isRecording) {
+        recognition.stop();
+        isRecording = false;
+    }
+});
+
+recognition.onresult = (event) => {
+    const speechToText = event.results[0][0].transcript;
+    fromText.value = speechToText;
+    translateBtn.click();
+};
+
+recognition.onerror = (event) => {
+    console.error('Speech recognition error:', event.error);
+};
+
+// Adding voice output feature
+playTranslation.addEventListener("click", () => {
+    let utterance = new SpeechSynthesisUtterance(toText.value);
+    utterance.lang = selectTags[1].value;
+    window.speechSynthesis.speak(utterance);
+});
+
+// Functions for the continent sidebar
 function openContinentSidebar(continent) {
     var continentSidebar = document.getElementById("continentSidebar");
     var continentSidebarContent = document.getElementById("continentSidebarContent");
@@ -113,78 +156,41 @@ function getCountriesForContinent(continent) {
     };
 
     return country_list[continent] || [];
-// Define the country list as a JavaScript array  
-  // Create the container element
+}
 
-  // Create the continent select element
-  const continentSelect = document.createElement('select');
-  continentSelect.id = 'continent-select';
-  
-  // Add an option for each continent
-  for (const continent of Object.keys(countryList)) {
-    const option = document.createElement('option');
-    option.value = continent;
-    option.textContent = continent;
-    continentSelect.appendChild(option);
-  }
-  
-  // Add an event listener to update the country list when the continent changes
-  continentSelect.addEventListener('change', () => {
-    const continent = continentSelect.value;
-    const countryListForContinent = getCountriesForContinent(continent);
-  
-    // Clear the existing country list
-    const countryListElement = document.getElementById('country-list');
-    countryListElement.innerHTML = '';
-  
-    // Add a list item for each country
-    for (const country of countryListForContinent) {
-      const listItem = document.createElement('li');
-      listItem.textContent = country;
-      countryListElement.appendChild(listItem);
-    }
-  });
-  
-  // Create the container element
-  const container = document.createElement('div');
-  container.style.width = '200px'; // adjust the width as needed
-  container.style.border = '1px solid #ccc';
-  
-  // Create the list element
-  const list = document.createElement('ul');
-  list.id = 'country-list';
-  
-  // Append the list to the container
-  container.appendChild(list);
-  
-  // Append the container to the body
-  document.body.appendChild(container);}
+// Drag-to-Scroll functionality
+const ele = document.getElementById('container');
+let pos = { top: 0, left: 0, x: 0, y: 0 };
 
-  const ele = document.getElementById('container');
-  ele.scrollTop = 100;
-  ele.scrollLeft = 150;
-  const mouseUpHandler = function () {
+const mouseDownHandler = function(e) {
+    ele.style.cursor = 'grabbing';
+    ele.style.userSelect = 'none';
+
+    pos = {
+        left: ele.scrollLeft,
+        top: ele.scrollTop,
+        x: e.clientX,
+        y: e.clientY,
+    };
+
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+};
+
+const mouseMoveHandler = function(e) {
+    const dx = e.clientX - pos.x;
+    const dy = e.clientY - pos.y;
+
+    ele.scrollTop = pos.top - dy;
+    ele.scrollLeft = pos.left - dx;
+};
+
+const mouseUpHandler = function() {
     document.removeEventListener('mousemove', mouseMoveHandler);
     document.removeEventListener('mouseup', mouseUpHandler);
 
     ele.style.cursor = 'grab';
     ele.style.removeProperty('user-select');
 };
-const mouseDownHandler = function(e) {
-    // Change the cursor and prevent user from selecting the text
-    ele.style.cursor = 'grabbing';
-    ele.style.userSelect = 'none';
-    
-};
-  
-const mouseMoveHandler = function (e) {
-    // How far the mouse has been moved
-    const dx = e.clientX - pos.x;
-    const dy = e.clientY - pos.y;
 
-    // Scroll the element
-    ele.scrollTop = pos.top - dy;
-    ele.scrollLeft = pos.left - dx;
-};
-let pos = { top: 0, left: 0, x: 0, y: 0 };
-
+ele.addEventListener('mousedown', mouseDownHandler);
